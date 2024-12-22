@@ -49,7 +49,7 @@ function SaveEquationDialog() {
                 <DialogHeader>
                     <DialogTitle className="text-blue-400">Save equation</DialogTitle>
                     <DialogDescription>
-                        Make changes to your profile here. Click save when you're done.
+                        Save your equation here. Click save when you're done.
                     </DialogDescription>
                 </DialogHeader>
                 <Form {...form}>
