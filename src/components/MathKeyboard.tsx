@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
+import { StaticMathField } from "react-mathquill"
 
 type Props = {
     showKeyboard: boolean,
@@ -9,7 +10,7 @@ type Props = {
 export default function MathKeyboard({ showKeyboard, onKeyClick }: Props) {
 
     const keyboardButtons = [
-        [['7', '7'], ['8', '8'], ['9', '9'], ['*', '\\cdot'], ['()/()', '\\frac{a}{b}']],
+        [['7', '7'], ['8', '8'], ['9', '9'], ['*', '\\cdot'], ["fraction", '\\frac{a}{b}']],
         [['4', '4'], ['5', '5'], ['6', '6'], ['-', '-'], ['+', '+']],
         [['1', '1'], ['2', '2'], ['3', '3'], ['(', '('], [')', ')']],
         [['0', '0'], ['.', '.'], ['x', 'x']]
@@ -25,6 +26,17 @@ export default function MathKeyboard({ showKeyboard, onKeyClick }: Props) {
 
                 {keyboardButtons.map((row) => (
                     row.map((btn) => {
+                        if (btn[0] === "fraction") {
+                            return <Button
+                                key={btn[0]}
+                                onClick={() => onKeyClick(btn[1])}
+                                className="py-4 text-lg bg-gray-800 hover:bg-gray-700 text-white"
+                            >
+                                <StaticMathField>{"\\frac{a}{b}"}</StaticMathField>
+                            </Button>
+                            
+                        }
+
                         if (btn[0] === "/") {
                             return <Button
                                 key={btn[0]}
